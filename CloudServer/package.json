@@ -1,0 +1,19 @@
+{
+  "name": "z-Cluster",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express":  "4.11.x",
+    "socket.io-client": "latest",
+    "fs": "latest",
+    "mongoose" : "*"
+  },
+  "devDependencies": {
+    "hbs": "~2.3.1",
+    "connect-multiparty": "latest",
+    "body-parser": "latest"
+  }
+}

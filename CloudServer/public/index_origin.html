@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+
+
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<link href='http://fonts.useso.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/amcharts.js"></script>	
+<script src="js/serial.js"></script>	
+<script src="js/light.js"></script>	
+<script src="js/radar.js"></script>	
+<link href="css/barChart.css" rel='stylesheet' type='text/css' />
+<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
+<!--clock init-->
+<script src="js/css3clock.js"></script>
+<!--Easy Pie Chart-->
+<!--skycons-icons-->
+<script src="js/skycons.js"></script>
+
+<script src="js/jquery.easydropdown.js"></script>
+
+<!--//skycons-icons-->
+
+
+	<!-- h5 -->
+
+	<!-- h5 -->
+
+</head> 
+<body>
+
+
+
+   <div class="page-container">
+
+			<!--/sidebar-menu-->
+				<div class="sidebar-menu">
+					<header class="logo">
+					<a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="index.html"> <span id="logo"> <h1>LinuxONE</h1></span>
+					<!--<img id="logo" src="" alt="Logo"/>-->
+				  </a>
+				</header>
+			<div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+			<!--/down-->
+					<!--
+							<div class="down">
+									  <a href="index.html"><img src="images/admin.png"></a>
+									  <a href="index.html"><span class=" name-caret">Qiushan</span></a>
+
+									<ul>
+									<li><a class="tooltips" href="index.html"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
+										<li><a class="tooltips" href="index.html"><span>Settings</span><i class="lnr lnr-cog"></i></a></li>
+										<li><a class="tooltips" href="index.html"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+										</ul>
+									</div> -->
+							   <!--//down-->
+                           <div class="menu">
+									<ul id="menu" >
+
+										<li id="menu-comunicacao" ><a href="/square"><i class="fa fa-tachometer"></i> <span>Images Square</span></a>
+										</li>
+										<li id="menu-comunicacao" ><a href="/login"><i class="fa fa-tachometer"></i> <span>Login</span></a>
+										</li>
+										<li id="menu-comunicacao" ><a href="/sign"><i class="fa fa-tachometer"></i> <span>Sign</span></a>
+										</li>
+								  </ul>
+								</div>
+							  </div>
+
+
+
+
+							  <div class="clearfix">
+
+
+
+							  </div>
+
+
+
+							</div>
+
+
+
+
+
+
+   <script>
+							var toggle = true;
+										
+							$(".sidebar-icon").click(function() {                
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+											
+											toggle = !toggle;
+										});
+							</script>
+<!--js -->
+<link rel="stylesheet" href="css/vroom.css">
+<script type="text/javascript" src="js/vroom.js"></script>
+<script type="text/javascript" src="js/TweenLite.min.js"></script>
+<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+   <script src="js/bootstrap.min.js"></script>
+
+
+   <!--
+
+   <script type="text/javascript">
+	   var container = {};
+	   container.server = 'http://9.114.15.123';
+	   container.port = 8080;
+	   container._id = '97c267a38919225efae56a4efb6db05a3b919ab0f9140250a12ddf8104b17453';
+
+	   function MonitorManager(){}
+
+	   // Get the container stats for the specified container.
+	   MonitorManager.prototype.getStats = function(hostname, port, containerId, callback) {
+		   // Request 60s of container history and no samples.
+		   var request = JSON.stringify({
+			   // Update main.statsRequestedByUI while updating "num_stats" here.
+			   'num_stats': 60,
+			   'num_samples': 0
+		   });
+
+		   var rootDir = hostname+':'+port+'/';
+
+		   $.when(
+				   $.post(rootDir + 'api/v1.0/containers/docker/' + containerId, request),
+				   $.post(rootDir + 'api/v1.0/subcontainers/docker/' + containerId, request))
+				   .done(function(containersResp, subcontainersResp) {
+					   callback(containersResp[0], subcontainersResp[0]);
+				   });
+
+
+	   }
+
+	   var monitor = new MonitorManager();
+
+
+	   monitor.getStats(container.server,  container.port, container._id, function(containerInfo) {
+		   /*if (window.cadvisor.firstRun) {
+			window.cadvisor.firstRun = false;
+
+			if (containerInfo.spec.has_filesystem) {
+			startFileSystemUsage(
+			'filesystem-usage', machineInfo, containerInfo);
+			}
+			if (containerInfo.spec.has_network) {
+			startNetwork('network-selection', containerInfo);
+			}
+			if (containerInfo.spec.has_custom_metrics) {
+			startCustomMetrics('custom-metrics-chart', containerInfo);
+			}
+			}
+			drawCharts(machineInfo, containerInfo, subcontainers);*/
+
+		   if (containerInfo.spec.has_cpu) {
+			   console.log("has cpu");
+		   }
+
+		   console.log("not has cpu");
+
+	   });
+   </script>
+-->
+
+
+
+
+
+</body>
+</html>
