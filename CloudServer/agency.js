@@ -2,7 +2,7 @@
  * Created by qiushan on 6/13/2016.
  */
 
-var socket = require('socket.io-client')('http://9.125.103.239:10002');
+var socket = require('socket.io-client')('http://127.0.0.1:10002');
 
 socket.on('connect', function () {
     console.log("client connected.");

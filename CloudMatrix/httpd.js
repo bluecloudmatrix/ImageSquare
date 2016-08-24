@@ -74,14 +74,27 @@ io.on('connection', function(socket){
 	var username = data.username;
 	shell.exec("./grabRegistryImages.sh -u "+username);
 	var all = require("./JSON/"+username+".json");
-	for (x in all.repositories)
+	if (username == "root")
 	{
-		var tempArr = all.repositories[x].split("/");
-		if(tempArr[0] == username) {
+		for (x in all.repositories)
+		{
 			var item = {};
 			item.imagename = all.repositories[x];
 			item.tag = "latest";
 			images.push(item);
+		}
+	}
+	else
+	{
+		for (x in all.repositories)
+		{
+			var tempArr = all.repositories[x].split("/");
+			if(tempArr[0] == username) {
+				var item = {};
+				item.imagename = all.repositories[x];
+				item.tag = "latest";
+				images.push(item);
+			}
 		}
 	}
 	socket.emit("imagesList", images);
