@@ -73,6 +73,7 @@ io.on('connection', function(socket){
 
 	var username = data.username;
 	shell.exec("./grabRegistryImages.sh -u "+username);
+	delete require.cache[require.resolve("./JSON/"+username+".json")];
 	var all = require("./JSON/"+username+".json");
 	if (username == "root")
 	{
