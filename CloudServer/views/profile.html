@@ -125,60 +125,49 @@
 															   <div class="col-md-6 profile-info two">
 
 
-																   <h3 class="inner-tittle">Push Your Image </h3>
+																   <h3 class="inner-tittle">PUSH</h3>
 																   <div class="main-grid3 p-skill">
 
 																	   <ul class="timeline">
-																		   <li>
-																			   <div class="timeline-badge info"><i class="fa fa-smile-o"></i></div>
-																			   <div class="timeline-panel">
-																				   <div class="timeline-heading">
-																					   <h4 class="timeline-title"><a href="profile.html">open your linux shell</a></h4>
-																				   </div>
-																				   <div class="timeline-body">
-																					   <p class="time">Step 1/4</p>
-																					   <!--<p>Commented on your image</p>-->
-																				   </div>
-																			   </div>
-																		   </li>
-
-																		   <li>
-																			   <div class="timeline-badge primary"><i class="fa fa-star-o"></i></div>
-																			   <div class="timeline-panel">
-																				   <div class="timeline-heading">
-																					   <h4 class="timeline-title"><a href="profile.html">$ docker login weare.pub</a></h4>
-																				   </div>
-																				   <div class="timeline-body">
-																					   <p class="time">Step 2/4</p>
-
-																				   </div>
-																			   </div>
-																		   </li>
-
-
-
-																		   <li>
-																			   <div class="timeline-badge danger"><i class="fa fa-times-circle-o"></i></div>
-																			   <div class="timeline-panel">
-																				   <div class="timeline-heading">
-																					   <h4 class="timeline-title"><a href="profile.html">$ docker tag hello-world:latest weare.pub/username/hello:latest</a></h4>
-																				   </div>
-																				   <div class="timeline-body">
-																					   <p class="time">Step 3/4</p>
-
-																				   </div>
-																			   </div>
-																		   </li>
 
 																		   <li>
 																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
 																			   <div class="timeline-panel">
-																				   <div class="timeline-heading">
-																					   <h4 class="timeline-title"><a href="profile.html">$ docker push weare.pub/username/hello:latest</a></h4>
-																				   </div>
-																				   <div class="timeline-body">
-																					   <p class="time">Step 4/4</p>
 
+																				   <div class="timeline-body">
+																					   <p class="time">Step 1/4 >>> login docker00 (for controlling authority, we only allow push action on docker00)</p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+																				   <div class="timeline-body">
+																					   <p class="time">Step 2/4 >>> docker tag sles12-base:latest 127.0.0.1:5000/sles12-base:latest (if you are root)</p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+																				   <div class="timeline-body">
+																					   <p class="time">Step 2/4 >>> docker tag sles12-base:latest 127.0.0.1:5000/username/sles12-base:latest (if you are not root)</p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+																				   <div class="timeline-body">
+																					   <p class="time">Step 3/4 >>> docker push 127.0.0.1:5000/sles12-base:latest (if you are root)</p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+																				   <div class="timeline-body">
+																					   <p class="time">Step 3/4 >>> docker push 127.0.0.1:5000/username/sles12-base:latest (if you are not root)</p>
 																				   </div>
 																			   </div>
 																		   </li>
@@ -186,6 +175,51 @@
 																	   <div class="clearfix"></div>
 																   </div>
 
+
+																   <h3 class="inner-tittle">PULL</h3>
+																   <div class="main-grid3 p-skill">
+
+																	   <ul class="timeline">
+
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+
+																				   <div class="timeline-body">
+																					   <p class="time">Step 1/4 >>> login other machine(such as docker01) except docker00 </p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+
+																				   <div class="timeline-body">
+																					   <p class="time">Step 2/4 >>> docker -d --insecure-registry docker00:5000 (the docker daemon parameter of the machine) </p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+
+																				   <div class="timeline-body">
+																					   <p class="time">Step 3/4 >>> curl http://docker00:5000/v2/_catalog (get the images list of the registry) </p>
+																				   </div>
+																			   </div>
+																		   </li>
+																		   <li>
+																			   <div class="timeline-badge success"><i class="fa fa-check-circle-o"></i></div>
+																			   <div class="timeline-panel">
+
+																				   <div class="timeline-body">
+																					   <p class="time">Step 4/4 >>> docker pull docker00:5000/sles12-base </p>
+																				   </div>
+																			   </div>
+																		   </li>
+																	   </ul>
+																	   <div class="clearfix"></div>
+																   </div>
 
 
 																   <!--
